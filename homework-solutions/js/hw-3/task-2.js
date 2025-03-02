@@ -8,7 +8,7 @@ n + nn + nnn, где n не перемножаются, а конкатенир�
 
 // Вариант 1:
 const n = 1;
-const sum = Number("" + n) + Number("" + n + n) + Number("" + n + n + n);
+const sum = n + Number("" + n + n) + Number("" + n + n + n);
 console.log(sum)
 
 // Вариант 2:
