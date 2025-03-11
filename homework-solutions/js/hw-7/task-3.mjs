@@ -9,7 +9,16 @@
 */
 
 function digitalRoot(number) {
-  // Ваш код
+  const numbersArray = String(number).split(""); // число преобразуем в строку и разбиваем на массив символов (цифр)
+  let sum = 0;
+  for (const element of numbersArray) {
+    sum += Number(element);
+  }
+  if (sum <= 9) {
+    return sum;
+  } else {
+    return digitalRoot(sum);
+  }
 }
 
 export { digitalRoot };
