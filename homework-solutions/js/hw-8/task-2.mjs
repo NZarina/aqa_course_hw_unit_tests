@@ -19,7 +19,21 @@ const words = [
 ];
 
 function sortedByVowels(wordsArr) {
-  // Ваш код
+  return wordsArr.slice().sort((a, b) => countVowels(a) - countVowels(b)); 
+    
+}
+
+function countVowels(word) {
+  const vowelsRU = "АЕЁИОУЫЭЮЯаеёиоуыэюя"; // все гласные русского алфавита в двух регистрах
+  const vowelsEN = "AEIOUaeiou"; // все гласные английского алфавита в двух регистрах
+  let numberOfvowels = 0;
+
+  for (const letter of word) {
+      if (vowelsRU.includes(letter) || vowelsEN.includes(letter)) { 
+          numberOfvowels += 1;
+      }
+  }
+  return numberOfvowels; // возвращаем кол-во гласных в слове
 }
 
 export { sortedByVowels };
