@@ -35,10 +35,10 @@ function getCharactersByAge(minAge) {
 
 function updateCharacter(name, newCharacter) {
   if (typeof name !== 'string') {
-    console.log('Введите имя заменяемого персонажа в формате string')
+    throw new Error('Введите имя заменяемого персонажа в формате string')
   }  
-  if (typeof newCharacter !== 'object') {
-    console.log('Введите данные в формате object');
+  if (typeof newCharacter !== 'object' || newCharacter == null) {
+    throw new Error('Введите данные в формате object');
   };
   const { name: newName, age: newAge } = newCharacter;
   const characterToChange = getCharacter(name);
