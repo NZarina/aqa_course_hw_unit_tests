@@ -14,23 +14,49 @@ const characters = [
 ];
 
 function addCharacter(character) {
-  // Ваш код
+  if(typeof character.name === 'string' && typeof character.age === 'number'){
+    characters.push(character)
+  } else {
+    throw new Error("ОШИБКА! Объект должен содержать параметр name с типом данных string и параметр age с типом данных number.");
+  }
 }
 
 function getCharacter(name) {
-  // Ваш код
+  return characters.find((character) => character.name == name) || undefined;
 }
 
 function getCharactersByAge(minAge) {
-  // Ваш код
+  if (typeof minAge === 'number') {
+    return characters.filter((character) => character.age >= minAge);
+  } else {
+    throw new Error("Введите минимальный возраст в формате number");
+  }
 }
 
 function updateCharacter(name, newCharacter) {
-  // Ваш код
+  if (typeof name !== 'string') {
+    throw new Error('Введите имя заменяемого персонажа в формате string')
+  }  
+  if (typeof newCharacter !== 'object' || newCharacter == null) {
+    throw new Error('Введите данные в формате object');
+  };
+  const { name: newName, age: newAge } = newCharacter;
+  const characterToChange = getCharacter(name);
+  if (characterToChange) {
+      characterToChange.name = (newName && typeof newName === 'string' && newName) || characterToChange.name;
+      characterToChange.age = (newAge && typeof newAge === 'number' && newAge) || characterToChange.age;
+  } else {
+    throw new Error("Персонаж не найден");
+  };
 }
 
 function removeCharacter(name) {
-  // Ваш код
+  const index = characters.findIndex((character) => character.name === name);
+  if(index >= 0) {
+      characters.splice(index, 1);
+  } else {
+    throw new Error('Персонаж не найден');
+  }
 }
 
 export { characters, addCharacter, updateCharacter, getCharacter, getCharactersByAge, removeCharacter };
