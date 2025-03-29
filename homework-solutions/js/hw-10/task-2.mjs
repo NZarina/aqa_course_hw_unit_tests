@@ -8,7 +8,15 @@
 */
 
 function countOccurrences(arr) {
-  // ваш код
+  const countedNumbersObject = {};
+  for (let element of arr) {
+    if (countedNumbersObject[element] === undefined) { // если объект не содержит ключ, равный элементу массива
+      countedNumbersObject[element] = 1; // добавим в объект пару "элемент массива : 1"
+    } else { // если такой ключ уже есть, увеличиваем его значение на единицу 
+      countedNumbersObject[element]++;
+    }
+  } 
+  return countedNumbersObject; 
 }
 
 export { countOccurrences };
