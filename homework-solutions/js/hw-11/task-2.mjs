@@ -149,14 +149,6 @@ class Company {
       return employeeToFind;
   }
 
-  removeEmployee(firstName) {
-      if(employeeIndex >= 0) {
-          this.#employees.splice(index, 1);
-      } else {
-          throw Error ("Can't find employee to remove");
-      } 
-  }
-
   #getEmployeeIndex(firstName) {
       const employeeIndex = this.#employees.findIndex((employee) => employee._firstname === firstName);
       return employeeIndex;
