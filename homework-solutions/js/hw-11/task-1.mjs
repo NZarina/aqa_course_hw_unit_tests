@@ -139,44 +139,6 @@ class Company {
   getInfo() {
     return `Компания: ${this.title}\nАдрес: ${this.address}\nКоличество сотрудников: ${this.#employees.length}`;
   }
-
-  findEmployeeByName(firstName) {
-      if(typeof firstName !== 'string') {
-          throw Error('Invalid firstname. Must be a string.');
-      };
-      const employeeToFind = this.#employees.find((employee) => employee._firstName === firstName);
-      if (!employeeToFind) throw Error ("Can't find employee");
-      return employeeToFind;
-  }
-
-  removeEmployee(firstName) {
-      if(employeeIndex >= 0) {
-          this.#employees.splice(index, 1);
-      } else {
-          throw Error ("Can't find employee to remove");
-      } 
-  }
-
-  #getEmployeeIndex(firstName) {
-      const employeeIndex = this.#employees.findIndex((employee) => employee._firstname === firstName);
-      return employeeIndex;
-  }
-
-  removeEmployee(firstName) {
-      const employeeIndex = this.#employees.findIndex((employee) => employee.firstName === firstName); // Добавлено: находим индекс
-      if (employeeIndex >= 0) {
-          this.#employees.splice(employeeIndex, 1); // Используем найденный индекс
-      } else {
-          throw Error ("Can't find employee to remove");
-      } 
-  }
-// Метод getTotalSalary() в классе Company, который возвращает сумму всех зарплат сотрудников
-  getTotalSalary() {
-      const totalSalaries = this.#employees.reduce((accumulator, item) => {
-          return accumulator += item.salary;
-        }, 0);
-      return totalSalaries;
-  }
 }
 
 const latinAlphabet = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
